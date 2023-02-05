@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
-  List fruitnames = ['apple', 'banana', 'staberry',];
+  List fruitnames = ['apple', 'banana', 'staberry', 'gauva'];
 
   @override
   Widget build(BuildContext context) {
@@ -13,18 +13,18 @@ class HomeScreen extends StatelessWidget {
         centerTitle: true,
         title: Text('list view and Grid view'),
       ),
-      body: ListView(
-        // ignore: prefer_const_literals_to_create_immutables
-        children: fruitnames.map((e) => 
-        Card(
+      body: ListView.builder(
+        itemCount: fruitnames.length,
+        itemBuilder: (context,index){
+        return Card(
            color: Colors.blue,
             child: Padding(
               padding: const EdgeInsets.all(15.0),
-              child: Text(e),
+              child: Text(fruitnames[index]),
             ),
-          ),
-        ).toList(),
-      ),
+          );
+      
+      })
     );
   }
 }
